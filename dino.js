@@ -39,7 +39,7 @@ export function getDinoRect() {
 
 export function setDinoLose() {
   // dinoElem.src = "images/dino-lose.png"
-  dinoElem.src = "images/obs.JPG"
+  dinoElem.src = "images/obs2.png"
   Collisionsound.play();
   
 }
@@ -47,14 +47,14 @@ export function setDinoLose() {
 function handleRun(delta, speedScale) {
   if (isJumping) {
     // dinoElem.src = `images/dino-run-1.png`
-    dinoElem.src = `images/obs.JPG`
+    dinoElem.src = `images/obs2.png`
     return
   }
 
   if (currentFrameTime >= FRAME_TIME) {
     dinoFrame = (dinoFrame + 1) % DINO_FRAME_COUNT
     // dinoElem.src = `images/dino-run-${dinoFrame}.png`
-    dinoElem.src = `images/obs.JPG`
+    dinoElem.src = `images/obs2.png`
     currentFrameTime -= FRAME_TIME
   }
   currentFrameTime += delta * speedScale
