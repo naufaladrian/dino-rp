@@ -10,7 +10,7 @@ const GRAVITY = 0.0015
 const DINO_FRAME_COUNT = 2
 const FRAME_TIME = 100
 let gameSound = new Audio("audio/press_sound.mp3");
-gameSound.volume=0.5;
+gameSound.volume = 0.5;
 let Collisionsound = new Audio("audio/hit_sound.mp3");
 Collisionsound.volume = 0.5;
 
@@ -39,22 +39,22 @@ export function getDinoRect() {
 
 export function setDinoLose() {
   // dinoElem.src = "images/dino-lose.png"
-  dinoElem.src = "images/obs2.png"
+  dinoElem.src = "images/oots/run-0.png"
   Collisionsound.play();
-  
+
 }
 
 function handleRun(delta, speedScale) {
   if (isJumping) {
     // dinoElem.src = `images/dino-run-1.png`
-    dinoElem.src = `images/obs2.png`
+    dinoElem.src = `images/oots/run-0.png`
     return
   }
 
   if (currentFrameTime >= FRAME_TIME) {
     dinoFrame = (dinoFrame + 1) % DINO_FRAME_COUNT
     // dinoElem.src = `images/dino-run-${dinoFrame}.png`
-    dinoElem.src = `images/obs2.png`
+    dinoElem.src = `images/oots/run-0.png`
     currentFrameTime -= FRAME_TIME
   }
   currentFrameTime += delta * speedScale

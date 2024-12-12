@@ -9,6 +9,7 @@ const SPEED_SCALE_INCREASE = 0.00001
 
 const worldElem = document.querySelector("[data-world]")
 const scoreElem = document.querySelector("[data-score]")
+const highscoreElem = document.querySelector("[data-highscore]")
 const startScreenElem = document.querySelector("[data-start-screen]")
 const stopScreenElem = document.querySelector("[data-end-screen]")
 
@@ -55,6 +56,15 @@ function isCollision(rect1, rect2) {
   )
 }
 
+function updateHighscore() {
+  if (score > Highscore) {
+    Highscore = score;
+    localStorage.setItem('highscore', Highscore);
+  }
+  highscoreElem.textContent = Math.floor(Highscore)
+
+}
+
 function updateSpeedScale(delta) {
   speedScale += delta * SPEED_SCALE_INCREASE
 }
@@ -62,14 +72,16 @@ function updateSpeedScale(delta) {
 function updateScore(delta) {
   score += delta * 0.01
   scoreElem.textContent = Math.floor(score)
+  updateHighscore();
 }
 
 
-function handleStart() {
+
+function handleStart(e) {
   lastTime = null
   speedScale = 1
   score = 0
-  Highscore = 1000
+  Highscore = localStorage.getItem('highscore') || 0;
   setupclouds()
   setupGround()
   setupDino()
